@@ -11,6 +11,11 @@ module.exports = {
       }
     ],
     ["@babel/plugin-proposal-optional-catch-binding"],
-    ["react-native-reanimated/plugin"]
+    [
+      "react-native-reanimated/plugin",
+      {
+        globals: ["__processWithTFLite"]
+      }
+    ]
   ],
 }
