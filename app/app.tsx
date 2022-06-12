@@ -19,6 +19,7 @@ import { AppNavigator, useNavigationPersistence } from "./navigators"
 import { RootStore, RootStoreProvider, setupRootStore } from "./models"
 import { ToggleStorybook } from "../storybook/toggle-storybook"
 import { ErrorBoundary } from "./screens/error/error-boundary"
+import * as FileSystem from "expo-file-system";
 
 // This puts screens in a native ViewController or Activity. If you want fully native
 // stack navigation, use `createNativeStackNavigator` in place of `createStackNavigator`:
@@ -37,11 +38,15 @@ function App() {
     isRestored: isNavigationStateRestored,
   } = useNavigationPersistence(storage, NAVIGATION_PERSISTENCE_KEY)
 
-  // Kick off initial async loading actions, like loading fonts and RootStore
+  // Kick off initial async loading actions
   useEffect(() => {
     ;(async () => {
       await initFonts() // expo
       setupRootStore().then(setRootStore)
+
+      // Setup directory if doesn't exist
+      const documentDirectory = FileSystem.documentDirectory;
+      await FileSystem.makeDirectoryAsync(documentDirectory + "pictures", { intermediates: true });
     })()
   }, [])
 
