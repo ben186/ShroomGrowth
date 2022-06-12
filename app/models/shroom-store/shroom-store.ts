@@ -11,7 +11,7 @@ export const ShroomStoreModel = types
   })
   .views((self) => ({
     sortByDate: () => {
-      return self.shrooms.slice().sort((a, b) => a.createdAt - b.createdAt);
+      return self.shrooms.slice().sort((a, b) => b.createdAt - a.createdAt);
     }
   }))
   .actions((self) => ({
