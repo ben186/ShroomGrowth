@@ -5,7 +5,6 @@ import { Text } from "../text/text"
 import { FlatList } from "react-native-gesture-handler"
 import { Shroom } from "../../models"
 import moment from "moment"
-import { AntDesign } from "@expo/vector-icons"
 
 const CONTAINER: ViewStyle = {
   justifyContent: "center",
