@@ -5,27 +5,34 @@ import { Text } from "../text/text"
 import { FlatList } from "react-native-gesture-handler"
 import { Shroom } from "../../models"
 import moment from "moment"
+import { AntDesign } from "@expo/vector-icons"
 
 const CONTAINER: ViewStyle = {
   justifyContent: "center",
 }
+const CONTENT: ViewStyle = {
+  elevation: 5
+}
 const ITEM: ViewStyle = {
   flex: 1,
   justifyContent: "space-between",
-  flexDirection: "column",
-  paddingHorizontal: "1%"
+  flexDirection: "row",
+  paddingHorizontal: "1%",
+  paddingVertical: "1%"
 }
 const INFO: ViewStyle = {
   flex: 1,
   justifyContent: "space-between",
   flexDirection: "column",
-  paddingHorizontal: 10
+  paddingHorizontal: "1%"
 }
 const PRIMARY_TEXT: TextStyle = {
-  color: "#111111"
+  color: "#111111",
+  fontSize: 16
 }
 const TEXT: TextStyle = {
   fontStyle: "italic",
+  fontSize: 14,
   color: "#636363",
   marginLeft: "auto"
 }
@@ -52,7 +59,7 @@ export const ShroomList = observer(function ShroomList(props: ShroomListProps) {
       style={ITEM}
       android_ripple={{ color: "#c6c6c6"}}
     >
-      <Image style={IMAGE} source={{ height: 50, width: 50 }}/>
+      <Image style={IMAGE} source={{ height: 50, width: 50, uri: item.uri }}/>
         <View style={INFO}>
           <Text style={PRIMARY_TEXT}>{item.name}</Text>
           <Text style={TEXT}>{moment.unix(item.createdAt / 1000).fromNow()}</Text>
@@ -63,6 +70,7 @@ export const ShroomList = observer(function ShroomList(props: ShroomListProps) {
   return (
     <View style={styles}>
       <FlatList
+        contentContainerStyle={CONTENT}
         data={props.data}
         renderItem={shroomItem}
         keyExtractor={item => item.id}

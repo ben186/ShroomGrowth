@@ -8,7 +8,7 @@ export const ShroomModel = types
   .props({
     id: types.identifier,
     name: types.maybe(types.string),
-    imgPath: types.maybe(types.string),
+    uri: types.maybe(types.string),
     day: types.maybe(types.integer),
     contaminated: types.maybe(types.boolean),
     createdAt: types.maybe(types.integer),
