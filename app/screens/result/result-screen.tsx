@@ -41,7 +41,7 @@ const RESULT: ViewStyle = {
 }
 const RESULT_TEXT: TextStyle = {
   fontSize: 17,
-  paddingLeft: "1%",
+  paddingLeft: "2%",
   color: "#111111"
 }
 const DELETE_BUTTON: ViewStyle = {
