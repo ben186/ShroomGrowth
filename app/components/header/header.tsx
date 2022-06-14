@@ -51,7 +51,7 @@ export function Header(props: HeaderProps) {
       </View>
       {rightIcon ? (
         <Button preset="link" onPress={onRightPress}>
-          <AntDesign name="arrowright" size={16} color="white" />
+          <AntDesign name="infocirlceo" size={24} color="white" />
         </Button>
       ) : (
         <View style={RIGHT} />
