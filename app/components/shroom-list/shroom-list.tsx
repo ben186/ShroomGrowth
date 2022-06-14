@@ -16,8 +16,8 @@ const ITEM: ViewStyle = {
   flex: 1,
   justifyContent: "space-between",
   flexDirection: "row",
-  paddingHorizontal: "1%",
-  paddingVertical: "1%"
+  paddingHorizontal: "2%",
+  paddingVertical: "1.5%"
 }
 const INFO: ViewStyle = {
   flex: 1,
@@ -36,7 +36,7 @@ const TEXT: TextStyle = {
   marginLeft: "auto"
 }
 const IMAGE: ImageStyle = {
-  borderRadius: 5
+  borderRadius: 1
 }
 
 export interface ShroomListProps {
@@ -45,7 +45,8 @@ export interface ShroomListProps {
   onItemPressed?: (id: string) => void;
 }
 
-export const ShroomList = observer(function ShroomList(props: ShroomListProps) {
+// TODO: Implement refresh control if possible
+export const ShroomList = observer((props: ShroomListProps) => {
   const { style } = props;
   const styles = Object.assign({}, CONTAINER, style);
 
