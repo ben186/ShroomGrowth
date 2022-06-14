@@ -6,6 +6,7 @@ import { NavigatorParamList } from "../../navigators"
 import { Button, Header, Screen, Text } from "../../components"
 import { color } from "../../theme"
 import { useStores } from "../../models"
+import { dayToPhase } from "./phase-converter"
 
 const ROOT: ViewStyle = {
   backgroundColor: color.palette.offWhite,
@@ -19,7 +20,8 @@ const HEADER: ViewStyle = {
   paddingLeft: "2%"
 }
 const HEADER_TEXT: TextStyle = {
-  fontSize: 20
+  fontSize: 20,
+  fontWeight: "bold"
 }
 const CONTENT: ViewStyle = {
   flex: 1,
@@ -27,16 +29,7 @@ const CONTENT: ViewStyle = {
 }
 const IMAGE: ImageStyle = {
   marginTop: "2%",
-  borderRadius: 3,
   alignSelf: "center"
-}
-const SUBHEADER_TEXT: TextStyle = {
-  fontWeight: "bold",
-  fontSize: 14,
-  paddingLeft: 7.5,
-  color: "#2A93D5",
-  textAlignVertical: "bottom",
-  paddingTop: "1%",
 }
 const RESULT: ViewStyle = {
   elevation: 2,
@@ -105,11 +98,12 @@ export const ResultScreen: FC<StackScreenProps<NavigatorParamList, "result">> = 
             uri: shroom.uri
           }}
         />
-        <Text style={SUBHEADER_TEXT}>Result</Text>
         <View style={{...RESULT, width: width - 15}}>
           <Text style={RESULT_TEXT}>
             {
-              `${shroom.day}, ${shroom.contaminated}`
+              `Contaminated: ${shroom.contaminated ? "Yes" : "No"}\n` +
+              `Day: ${shroom.day}\n` +
+              `Phase: ${dayToPhase(shroom.day)}`
             }
           </Text>
         </View>
