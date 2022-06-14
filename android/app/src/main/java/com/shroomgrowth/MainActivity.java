@@ -1,4 +1,4 @@
-package com.mushroomapp;
+package com.shroomgrowth;
 
 import android.os.Build;
 import android.os.Bundle;

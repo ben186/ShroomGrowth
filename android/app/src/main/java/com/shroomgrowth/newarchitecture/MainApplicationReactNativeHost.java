@@ -1,4 +1,4 @@
-package com.mushroomapp.newarchitecture;
+package com.shroomgrowth.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.mushroomapp.BuildConfig;
-import com.mushroomapp.newarchitecture.components.MainComponentsRegistry;
-import com.mushroomapp.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.shroomgrowth.BuildConfig;
+import com.shroomgrowth.newarchitecture.components.MainComponentsRegistry;
+import com.shroomgrowth.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

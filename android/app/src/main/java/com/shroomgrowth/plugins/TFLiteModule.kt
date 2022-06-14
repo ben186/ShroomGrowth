@@ -1,4 +1,4 @@
-package com.mushroomapp.plugins
+package com.shroomgrowth.plugins
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory

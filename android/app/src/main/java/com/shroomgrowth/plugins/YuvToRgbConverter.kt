@@ -1,4 +1,4 @@
-package com.mushroomapp.plugins
+package com.shroomgrowth.plugins
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -10,7 +10,7 @@ import android.renderscript.Element
 import android.renderscript.RenderScript
 import android.renderscript.ScriptIntrinsicYuvToRGB
 import android.renderscript.Type
-import com.mushroomapp.BuildConfig
+import com.shroomgrowth.BuildConfig
 import java.nio.ByteBuffer
 
 /**

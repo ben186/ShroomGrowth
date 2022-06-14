@@ -1,4 +1,4 @@
-package com.mushroomapp.newarchitecture.components;
+package com.shroomgrowth.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

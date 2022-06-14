@@ -1,4 +1,4 @@
-package com.mushroomapp.newarchitecture.modules;
+package com.shroomgrowth.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;
