@@ -107,7 +107,11 @@ export const ResultScreen: FC<StackScreenProps<NavigatorParamList, "result">> = 
         />
         <Text style={SUBHEADER_TEXT}>Result</Text>
         <View style={{...RESULT, width: width - 15}}>
-          <Text style={RESULT_TEXT}>Hello World</Text>
+          <Text style={RESULT_TEXT}>
+            {
+              `${shroom.day}, ${shroom.contaminated}`
+            }
+          </Text>
         </View>
         <Button onPress={deleteItem} style={{...DELETE_BUTTON, width: width - 15}}>
           <Text>Delete</Text>

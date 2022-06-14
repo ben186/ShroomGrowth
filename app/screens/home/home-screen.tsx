@@ -10,6 +10,7 @@ import moment from "moment"
 import { useStores, ShroomModel } from "../../models"
 import { process } from "./image-picker-util"
 import * as ImagePicker from "expo-image-picker";
+import TFLiteModule from "../../plugins/tflite-module"
 
 const ROOT: ViewStyle = {
   flex: 1,
@@ -72,12 +73,15 @@ export const HomeScreen: FC<StackScreenProps<NavigatorParamList, "home">> = obse
       if (result === null) return;
 
       const id = moment().format('YYYY-MM-DD-hh-mm-ss');
+      const prediction = await TFLiteModule.predictAllFromImage(result.uri);
 
       // TODO: Copy the file to permanent directory
       // TODO: Use UUID?
       shroomStore.add(ShroomModel.create({
         id: id,
         name: id,
+        day: prediction.day,
+        contaminated: prediction.contaminated,
         createdAt: Date.now(),
         updatedAt: Date.now(),
         uri: result.uri
