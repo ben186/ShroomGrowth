@@ -26,6 +26,9 @@
     },
     "android": {
       "package": "com.mushroomapp"
-    }
+    },
+    "plugins": [
+      "react-native-vision-camera"
+    ]
   }
 }
