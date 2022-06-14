@@ -1,5 +1,3 @@
-export * from "./welcome/welcome-screen"
-export * from "./demo/demo-screen"
 export * from "./error/error-boundary"
 export * from "./result/result-screen"
 export * from "./home/home-screen"
