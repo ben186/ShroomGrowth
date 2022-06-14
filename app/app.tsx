@@ -20,12 +20,18 @@ import { RootStore, RootStoreProvider, setupRootStore } from "./models"
 import { ToggleStorybook } from "../storybook/toggle-storybook"
 import { ErrorBoundary } from "./screens/error/error-boundary"
 import * as FileSystem from "expo-file-system";
+import TFLiteModule from "./plugins/tflite-module"
+import { Asset } from "expo-asset"
 
 // This puts screens in a native ViewController or Activity. If you want fully native
 // stack navigation, use `createNativeStackNavigator` in place of `createStackNavigator`:
 // https://github.com/kmagiera/react-native-screens#using-native-stack-navigator
 
 export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE"
+
+const getModelUri = async (model: string | number) => {
+  return (await Asset.loadAsync(model))[0].localUri;
+}
 
 /**
  * This is the root component of our app.
@@ -43,6 +49,13 @@ function App() {
     ;(async () => {
       await initFonts() // expo
       setupRootStore().then(setRootStore)
+
+      // Setup TFLite
+      if (!TFLiteModule.isLoaded()) {
+        const mNetModelUri = await getModelUri(require("../assets/models/m_net/MNet.tflite"));
+        const mConNetModelUri = await getModelUri(require("../assets/models/mcon_net/MConNet.tflite"));
+        await TFLiteModule.loadModels(mNetModelUri, mConNetModelUri);
+      }
 
       // Setup directory if doesn't exist
       const documentDirectory = FileSystem.documentDirectory;
