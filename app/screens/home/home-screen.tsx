@@ -1,6 +1,6 @@
-import React, { FC, useEffect } from "react"
+import React, { FC, useEffect, useState } from "react"
 import { observer } from "mobx-react-lite"
-import { Pressable, TextStyle, View, ViewStyle } from "react-native"
+import { ActivityIndicator, Pressable, TextStyle, View, ViewStyle } from "react-native"
 import { StackScreenProps } from "@react-navigation/stack"
 import { NavigatorParamList } from "../../navigators"
 import { Screen, ShroomList, Text, Header } from "../../components"
@@ -63,12 +63,18 @@ const CAMERA_BUTTON: ViewStyle = {
   justifyContent: "center",
   elevation: 5
 }
+const LOADING: ViewStyle = {
+  flex: 1,
+  justifyContent: "center"
+}
 
 export const HomeScreen: FC<StackScreenProps<NavigatorParamList, "home">> = observer(
   ({ navigation }) => {
+    const [isLoading, setIsLoading] = useState(false);
     const { shroomStore } = useStores();
 
     const processImage = async (mode: "CAPTURE" | "PICK") => {
+      setIsLoading(true);
       const result = await process(mode);
       if (result === null) return;
 
@@ -88,6 +94,7 @@ export const HomeScreen: FC<StackScreenProps<NavigatorParamList, "home">> = obse
       }));
 
       navigation.navigate("result", { id });
+      setIsLoading(false);
     };
 
     useEffect(() => {
@@ -97,9 +104,15 @@ export const HomeScreen: FC<StackScreenProps<NavigatorParamList, "home">> = obse
       })();
     }, []);
 
-    return (
-      <View testID="DemoListScreen" style={ROOT}>
-        <Header style={HEADER} titleStyle={HEADER_TEXT} headerText="ShroomGrowth" />
+    const loading = () => (
+      <View style={LOADING}>
+        <ActivityIndicator size="large" color="#2A93D5" />
+      </View>
+    );
+
+    const content = () => (
+      <View style={ROOT}>
+        <Header rightIcon="bug" style={HEADER} titleStyle={HEADER_TEXT} headerText="ShroomGrowth" />
         {shroomStore.shrooms.length !== 0 && (<Text style={SUBHEADER_TEXT}>Recently</Text>)}
         <Screen style={CONTAINER} preset="fixed" backgroundColor={color.transparent}>
           <ShroomList 
@@ -123,5 +136,7 @@ export const HomeScreen: FC<StackScreenProps<NavigatorParamList, "home">> = obse
         </Pressable>
       </View>
     )
+
+    return (<View testID="DemoListScreen" style={ROOT}>{isLoading ? loading() : content()}</View>);
   },
 )
