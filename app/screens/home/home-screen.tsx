@@ -112,7 +112,7 @@ export const HomeScreen: FC<StackScreenProps<NavigatorParamList, "home">> = obse
 
     const content = () => (
       <View style={ROOT}>
-        <Header rightIcon="bug" style={HEADER} titleStyle={HEADER_TEXT} headerText="ShroomGrowth" />
+        <Header style={HEADER} titleStyle={HEADER_TEXT} headerText="ShroomGrowth" />
         {shroomStore.shrooms.length !== 0 && (<Text style={SUBHEADER_TEXT}>Recently</Text>)}
         <Screen style={CONTAINER} preset="fixed" backgroundColor={color.transparent}>
           <ShroomList 
