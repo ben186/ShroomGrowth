@@ -74,9 +74,9 @@ export const HomeScreen: FC<StackScreenProps<NavigatorParamList, "home">> = obse
     const { shroomStore } = useStores();
 
     const processImage = async (mode: "CAPTURE" | "PICK") => {
-      setIsLoading(true);
       const result = await process(mode);
       if (result === null) return;
+      setIsLoading(true);
 
       const id = moment().format('YYYY-MM-DD-hh-mm-ss');
       const prediction = await TFLiteModule.predictAllFromImage(result.uri);
