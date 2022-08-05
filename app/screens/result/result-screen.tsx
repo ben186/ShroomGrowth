@@ -27,22 +27,43 @@ const CONTENT: ViewStyle = {
   flex: 1,
   justifyContent: "space-evenly"
 }
+const CONTAMINATION: ViewStyle = {
+  elevation: 2,
+  height: 50,
+  alignSelf: "center",
+  marginTop: "2%",
+  justifyContent: "center",
+  backgroundColor: "#ffffff"
+}
+const CONTAMINATION_TEXT: TextStyle = {
+  fontSize: 20,
+  fontWeight: "bold",
+  alignSelf: "center"
+}
 const IMAGE: ImageStyle = {
   marginTop: "2%",
   alignSelf: "center"
 }
 const RESULT: ViewStyle = {
   elevation: 2,
-  height: 100,
+  height: 80,
   backgroundColor: "#ffffff",
   alignSelf: "center",
   marginTop: "2%",
   justifyContent: "center"
 }
 const RESULT_TEXT: TextStyle = {
-  fontSize: 17,
+  fontSize: 19,
   paddingLeft: "2%",
   color: "#111111"
+}
+const INFO_TEXT: TextStyle = {
+  fontSize: 12,
+  color: "#636363",
+  marginTop: "0.5%",
+  alignSelf: "center",
+  textAlign: "justify",
+  fontStyle: "italic"
 }
 const DELETE_BUTTON: ViewStyle = {
   marginTop: "auto", 
@@ -80,6 +101,8 @@ export const ResultScreen: FC<StackScreenProps<NavigatorParamList, "result">> = 
     );
   };
 
+  const contaminationBgColor = shroom.contaminated ? "#ff482b" : "#348a21";
+
   return (
     <Screen style={ROOT} preset={"scroll"}>
       <Header 
@@ -90,6 +113,13 @@ export const ResultScreen: FC<StackScreenProps<NavigatorParamList, "result">> = 
         headerText={shroom.id}
       />
       <View style={CONTENT}>
+        <View style={{...CONTAMINATION, width: width - 15, backgroundColor: contaminationBgColor}}>
+          <Text style={CONTAMINATION_TEXT}>
+            {
+              shroom.contaminated ? "CONTAMINATED" : "NOT CONTAMINATED"
+            }
+          </Text>
+        </View>
         <Image 
           style={IMAGE}
           source={{
@@ -101,12 +131,14 @@ export const ResultScreen: FC<StackScreenProps<NavigatorParamList, "result">> = 
         <View style={{...RESULT, width: width - 15}}>
           <Text style={RESULT_TEXT}>
             {
-              `Contaminated: ${shroom.contaminated ? "Yes" : "No"}\n` +
               `Day: ${shroom.day}\n` +
               `Phase: ${dayToPhase(shroom.day)}`
             }
           </Text>
         </View>
+        <Text style={{...INFO_TEXT, width: width - 15}}>
+          ⓘ Prediction may not be accurate if the mushroom is contaminated
+        </Text>
         <Button onPress={deleteItem} style={{...DELETE_BUTTON, width: width - 15}}>
           <Text>Delete</Text>
         </Button>
