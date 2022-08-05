@@ -32,7 +32,7 @@ const SUBHEADER_TEXT: TextStyle = {
   fontWeight: "bold",
   fontSize: 14,
   paddingLeft: "2%",
-  color: "#2A93D5",
+  color: "#111111",
   textAlignVertical: "center",
   paddingTop: "1%",
 }
