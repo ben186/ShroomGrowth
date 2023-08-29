@@ -1,5 +1,5 @@
 # ShroomGrowth 🍄
-An AI-powered scanner with Android devices to identify growth phase of rhizomorphic mycelium powered by Ignite.
+An AI-powered scanner on Android to identify growth phase of rhizomorphic mycelium powered by Ignite.
 
 # Screenshots
 |![](screenshots/home.png)|![](screenshots/result.png)|![](screenshots/list.png)|
