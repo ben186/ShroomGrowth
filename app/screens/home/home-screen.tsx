@@ -14,6 +14,7 @@ import TFLiteModule from "../../plugins/tflite-module"
 
 const ROOT: ViewStyle = {
   flex: 1,
+  backgroundColor: color.palette.offWhite
 }
 const HEADER: ViewStyle = {
   elevation: 5,
@@ -82,7 +83,7 @@ export const HomeScreen: FC<StackScreenProps<NavigatorParamList, "home">> = obse
       const prediction = await TFLiteModule.predictAllFromImage(result.uri);
 
       // TODO: Copy the file to permanent directory
-      // TODO: Use UUID?
+      // TODO: Use UUID instead of Date?
       shroomStore.add(ShroomModel.create({
         id: id,
         name: id,
